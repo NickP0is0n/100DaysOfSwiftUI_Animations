@@ -20,11 +20,12 @@ struct ContentView: View {
                     .onChanged {
                         dragAmount = $0.translation
                     }
-                    .onEnded {
-                        _ in dragAmount = .zero
+                    .onEnded { _ in
+                        withAnimation(.easeInOut(duration: 2)) {
+                            dragAmount = .zero
+                        }
                     }
              )
-            .animation(.default, value: dragAmount)
     }
 }
 
